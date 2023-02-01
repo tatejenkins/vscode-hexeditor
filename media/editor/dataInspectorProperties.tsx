@@ -49,7 +49,12 @@ export const inspectableTypes: readonly IInspectableType[] = [
 		minBytes: 1,
 		convert: dv => {
 			const utf8 = new TextDecoder("utf-8").decode(dv.buffer);
-			for (const char of utf8) return char;
+			let tatesi = 0;
+			for (const char of utf8) {
+				if (tatesi < 16) console.log(char);
+				tatesi++;
+				return char;
+			}
 			return utf8;
 		},
 	},
